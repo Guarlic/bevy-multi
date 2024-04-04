@@ -30,7 +30,7 @@ pub fn update(
 
         for (key, direction) in movements.iter() {
             if keys.pressed(*key) {
-                const PLAYER_SPEED: f32 = 200.;
+                const PLAYER_SPEED: f32 = 500.;
                 let distance = PLAYER_SPEED * time.delta_seconds();
 
                 player_transform.translation += *direction * distance;

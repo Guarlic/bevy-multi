@@ -33,7 +33,7 @@ pub fn update_game_over(
 
 pub fn update_gravity(mut player_query: Query<&mut Transform, With<Player>>) {
     const GRAVITY: f32 = -9.81;
-    const SPEED: f32 = 0.2;
+    const SPEED: f32 = 0.4;
 
     for mut player_transform in player_query.iter_mut() {
         player_transform.translation.y += GRAVITY * SPEED;

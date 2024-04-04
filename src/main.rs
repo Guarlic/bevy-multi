@@ -5,6 +5,7 @@ mod system;
 mod components;
 mod player1;
 mod player2;
+mod platform;
 
 fn main() {
     App::new()
@@ -23,6 +24,7 @@ fn main() {
                 system::setup,
                 player1::setup,
                 player2::setup,
+                platform::setup,
             )
         )
         .add_systems(
@@ -31,6 +33,7 @@ fn main() {
                 system::update_gravity,
                 player1::update,
                 player2::update,
+                platform::update_spawn,
             )
         )
         .run();
