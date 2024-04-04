@@ -34,6 +34,7 @@ fn main() {
                 player1::update,
                 player2::update,
                 platform::update_spawn,
+                platform::update_move,
             )
         )
         .run();

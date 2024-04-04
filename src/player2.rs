@@ -34,6 +34,8 @@ pub fn update(
                 let distance = PLAYER_SPEED * time.delta_seconds();
 
                 player_transform.translation += *direction * distance;
+
+                player_transform.translation.x = player_transform.translation.x.clamp(-450., 450.);
             }
         }
     }

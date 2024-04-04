@@ -1,6 +1,6 @@
-use std::time::Duration;
 use crate::components::*;
 use crate::components::Direction;
+use std::time::Duration;
 use bevy::prelude::*;
 use rand::Rng;
 
@@ -62,6 +62,24 @@ pub fn update_spawn(
     }
 }
 
-pub fn update_move() {
-    // TODO 발판이 좌우로 왕복 운동
+pub fn update_move(
+    time: Res<Time>,
+    mut platform_query: Query<(&mut Transform, &mut Direction), With<Platform>>
+) {
+    for (mut platform_transform, mut platform_direction) in platform_query.iter_mut() {
+        const PLATFORM_SPEED: f32 = 90.;
+        let distance = PLATFORM_SPEED * time.delta_seconds();
+
+        match *platform_direction {
+            Direction::Left => platform_transform.translation.x -= distance,
+            Direction::Right => platform_transform.translation.x += distance
+        }
+
+        if platform_transform.translation.x > 450. {
+            *platform_direction = Direction::Left;
+        }
+        else if platform_transform.translation.x < -450. {
+            *platform_direction = Direction::Right;
+        }
+    }
 }
