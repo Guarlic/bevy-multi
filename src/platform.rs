@@ -28,7 +28,6 @@ pub fn update_spawn(
     player_query: Query<&Transform, With<Player>>,
     mut commands: Commands
 ) {
-    // TODO 발판 지속적으로 생성
     for mut timer in timer_query.iter_mut() {
         if timer.0.tick(time.delta()).just_finished() {
             for player_transform in player_query.iter() {
