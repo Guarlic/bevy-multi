@@ -19,6 +19,21 @@ pub struct TimerStruct(pub(crate) Timer);
 pub struct PlatformTimer;
 
 #[derive(Component)]
+pub struct P1AttackTimer();
+
+#[derive(Component)]
+pub struct P2AttackTimer();
+
+#[derive(Component)]
+pub struct Attack;
+
+#[derive(Component)]
+pub struct P1Attack;
+
+#[derive(Component)]
+pub struct P2Attack;
+
+#[derive(Component)]
 pub(crate) enum Direction {
     Left,
     Right
