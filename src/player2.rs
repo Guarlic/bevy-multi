@@ -2,13 +2,16 @@ use crate::components::*;
 use crate::components::Direction;
 use bevy::prelude::*;
 
-pub fn setup(mut commands: Commands) {
+pub fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
+    let texture = asset_server.load("player2.png");
+
     let player = SpriteBundle {
         sprite: Sprite {
             custom_size: Some(Vec2::new(30., 30.)),
-            color: Color::LIME_GREEN,
+            // color: Color::LIME_GREEN,
             ..default()
         },
+        texture,
         transform: Transform::from_xyz(-100., 0., 0.),
         ..default()
     };

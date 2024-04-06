@@ -64,8 +64,18 @@ pub fn update_gravity(mut player_query: Query<&mut Transform, With<Player>>) {
     for mut player_transform in player_query.iter_mut() {
         player_transform.translation.y += GRAVITY * SPEED;
 
-        if player_transform.translation.y.abs() >= 320. {
-            player_transform.translation.y = 0.;
+        // player_transform.translation.y = player_transform.translation.y.clamp(-350., 350.);
+
+        if player_transform.translation.y >= 350. {
+            player_transform.translation.y = -320.;
         }
+
+        if player_transform.translation.y <= -350. {
+            player_transform.translation.y = 320.;
+        }
+
+        // if player_transform.translation.y.abs() >= 350. {
+            // player_transform.translation.y = player_transform.translation.y * -1.;
+        // }
     }
 }
