@@ -8,7 +8,6 @@ pub fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
     let player = SpriteBundle {
         sprite: Sprite {
             custom_size: Some(Vec2::new(30., 30.)),
-            // color: Color::CRIMSON,
             ..default()
         },
         texture,
