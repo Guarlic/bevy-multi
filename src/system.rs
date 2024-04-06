@@ -25,7 +25,7 @@ pub fn update_game_over(
                 p2attack_sprite.custom_size.unwrap(),
             );
 
-            if let Some(_) = collision_p2win {
+            if collision_p2win.is_some() {
                 println!("P2 Win!");
 
                 sleep(Duration::from_millis(800));

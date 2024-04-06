@@ -8,7 +8,7 @@ pub fn update(
     mut commands: Commands
 ) {
     for (mut attack_transform, attack_direction, attack_entity) in attack_query.iter_mut() {
-        if attack_transform.translation.x < -450. || attack_transform.translation.x > 450. {
+        if attack_transform.translation.x.abs() > 500. {
             commands.entity(attack_entity).despawn();
 
             return;

@@ -3,14 +3,12 @@ use crate::components::Direction;
 use bevy::prelude::*;
 
 pub fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
-    let texture = asset_server.load("player1.png");
-
     let player = SpriteBundle {
         sprite: Sprite {
             custom_size: Some(Vec2::new(30., 30.)),
             ..default()
         },
-        texture,
+        texture: asset_server.load("player1.png"),
         transform: Transform::from_xyz(100., 0., 0.),
         ..default()
     };
