@@ -18,7 +18,13 @@ pub fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
         ..default()
     };
 
+    let bgm = AudioBundle {
+        source: asset_server.load("background.ogg"),
+        ..default()
+    };
+
     commands.spawn(background);
+    commands.spawn(bgm);
 }
 
 pub fn update_game_over(
@@ -39,11 +45,9 @@ pub fn update_game_over(
 
             if collision_p2win.is_some() {
                 println!("P2 Win!");
+                game_over = true;
 
-                sleep(Duration::from_millis(800));
-                exit_events.send(AppExit);
-
-                return;
+                break;
             }
         }
     }
@@ -59,13 +63,18 @@ pub fn update_game_over(
 
             if collision_p1win.is_some() {
                 println!("P1 Win!");
+                game_over = true;
 
-                sleep(Duration::from_millis(800));
-                exit_events.send(AppExit);
-
-                return;
+                break;
             }
         }
+    }
+
+    if game_over {
+        sleep(Duration::from_millis(800));
+        exit_events.send(AppExit);
+
+        return;
     }
 }
 

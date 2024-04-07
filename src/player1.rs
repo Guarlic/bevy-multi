@@ -20,7 +20,8 @@ pub fn update(
     keys: Res<Input<KeyCode>>,
     time: Res<Time>,
     mut player_query: Query<&mut Transform, With<Player1>>,
-    mut commands: Commands
+    mut commands: Commands,
+    asset_server: Res<AssetServer>
 ) {
     for mut player_transform in player_query.iter_mut() {
         let movements = [
@@ -35,7 +36,6 @@ pub fn update(
                 let attack = SpriteBundle {
                     sprite: Sprite {
                         custom_size: Some(Vec2::new(50., 10.)),
-                        // color: Color::rgb(0.9, 0.6, 0.6).into(),
                         color: Color::CRIMSON,
                         ..default()
                     },
@@ -43,7 +43,13 @@ pub fn update(
                     ..default()
                 };
 
+                let sound = AudioBundle {
+                    source: asset_server.load("attack.ogg"),
+                    ..default()
+                };
+
                 commands.spawn((attack, Attack, P1Attack, Direction::Left));
+                commands.spawn(sound);
             }
 
             if keys.pressed(*key) {
