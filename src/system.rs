@@ -73,7 +73,7 @@ pub fn update_game_over(
     }
 
     if game_over {
-        sleep(Duration::from_millis(1500));
+        sleep(Duration::from_millis(800));
         exit_events.send(AppExit);
 
         return;
