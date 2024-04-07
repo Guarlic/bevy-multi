@@ -5,8 +5,20 @@ use bevy::prelude::*;
 use bevy::app::AppExit;
 use bevy::sprite::collide_aabb::collide;
 
-pub fn setup(mut commands: Commands) {
+pub fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
     commands.spawn(Camera2dBundle::default());
+
+    let background = SpriteBundle {
+        sprite: Sprite {
+            custom_size: Some(Vec2::new(1000., 700.)),
+            ..default()
+        },
+        texture: asset_server.load("background.png"),
+        transform: Transform::from_xyz(0., 0., -10.),
+        ..default()
+    };
+
+    commands.spawn(background);
 }
 
 pub fn update_game_over(

@@ -35,7 +35,8 @@ pub fn update(
                 let attack = SpriteBundle {
                     sprite: Sprite {
                         custom_size: Some(Vec2::new(50., 10.)),
-                        color: Color::rgb(0.9, 0.6, 0.6).into(),
+                        // color: Color::rgb(0.9, 0.6, 0.6).into(),
+                        color: Color::CRIMSON,
                         ..default()
                     },
                     transform: *player_transform,

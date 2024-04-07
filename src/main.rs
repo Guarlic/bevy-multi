@@ -1,5 +1,4 @@
 use bevy::prelude::*;
-use bevy::window::WindowTheme;
 
 mod system;
 mod components;
@@ -13,7 +12,6 @@ fn main() {
             primary_window: Some(Window {
                 title: "Bevy Multiplayer Test".into(),
                 resolution: (1000., 700.).into(),
-                window_theme: Some(WindowTheme::Dark),
                 resizable: false,
                 ..default()
             }),
