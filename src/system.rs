@@ -34,6 +34,8 @@ pub fn update_game_over(
     p1attack_query: Query<(&Transform, &Sprite), With<P1Attack>>,
     p2attack_query: Query<(&Transform, &Sprite), With<P2Attack>>
 ) {
+    let mut game_over: bool = false;
+
     for (player1_transform, player1_sprite) in player1_query.iter() {
         for (p2attack_transform, p2attack_sprite) in p2attack_query.iter() {
             let collision_p2win = collide(
@@ -71,7 +73,7 @@ pub fn update_game_over(
     }
 
     if game_over {
-        sleep(Duration::from_millis(800));
+        sleep(Duration::from_millis(1500));
         exit_events.send(AppExit);
 
         return;
