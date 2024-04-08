@@ -28,6 +28,9 @@ pub struct P1Attack;
 pub struct P2Attack;
 
 #[derive(Component)]
+pub struct AttackSound;
+
+#[derive(Component)]
 pub(crate) enum Direction {
     Left,
     Right

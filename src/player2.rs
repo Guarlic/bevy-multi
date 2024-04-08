@@ -20,8 +20,7 @@ pub fn update(
     keys: Res<Input<KeyCode>>,
     time: Res<Time>,
     mut player_query: Query<&mut Transform, With<Player2>>,
-    mut commands: Commands,
-    asset_server: Res<AssetServer>
+    mut commands: Commands
 ) {
     for mut player_transform in player_query.iter_mut() {
         let movements = [
@@ -43,13 +42,7 @@ pub fn update(
                     ..default()
                 };
 
-                let sound = AudioBundle {
-                    source: asset_server.load("attack.ogg"),
-                    ..default()
-                };
-
                 commands.spawn((attack, Attack, P2Attack, Direction::Right));
-                commands.spawn(sound);
             }
 
             if keys.pressed(*key) {
